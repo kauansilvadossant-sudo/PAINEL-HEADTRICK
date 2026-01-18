@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { background-color: #0d0118; color: white; font-family: sans-serif; text-align: center; padding: 10px; margin: 0; }
+        .box { background: #1a052d; border: 2px solid #8a2be2; border-radius: 10px; padding: 20px; max-width: 350px; margin: auto; position: relative; }
+        
+        /* Ponto do Headtrick */
+        #dot { 
+            width: 6px; height: 6px; background: #ff0000; border-radius: 50%; 
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #ff0000; display: none; z-index: 999;
+        }
+
+        .item { 
+            background: #250a3d; padding: 12px; margin: 10px 0; border-radius: 8px; 
+            display: flex; justify-content: space-between; align-items: center; border: 1px solid #3e0b7a;
+        }
+
+        button { background: #8a2be2; color: white; border: none; padding: 15px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        input { width: 80%; padding: 15px; margin: 10px 0; border-radius: 5px; border: 1px solid #8a2be2; background: #000; color: #00ff88; text-align: center; }
+
+        .hide { display: none !important; }
+
+        /* Switch */
+        .sw { width: 40px; height: 20px; background: #444; border-radius: 10px; position: relative; }
+        .sw-input { display: none; }
+        .sw-ball { position: absolute; width: 16px; height: 16px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: 0.3s; }
+        .sw-input:checked + .sw-ball { left: 22px; background: #00ff88; }
+    </style>
+</head>
+<body>
+
+    <div id="dot"></div>
+
+    <div id="scr-login" class="box">
+        <h3 style="color: #d080ff;">KAUANZIN HEADTRICK</h3>
+        <input type="password" id="campo-key" placeholder="CHAVE MESTRA" maxlength="4">
+        <button onclick="logar()">ENTRAR</button>
+    </div>
+
+    <div id="scr-menu" class="box hide">
+        <h3 style="color: #d080ff;">HEADTRICK & SENSI</h3>
+        
+        <div class="item">
+            <span>ATIVAR PONTO FIXO</span>
+            <label class="sw">
+                <input type="checkbox" class="sw-input" onchange="toggleDot(this)">
+                <div class="sw-ball"></div>
+            </label>
+        </div>
+
+        <div class="item">
+            <span>AJUSTE CURVA EM J</span>
+            <label class="sw">
+                <input type="checkbox" class="sw-input">
+                <div class="sw-ball"></div>
+            </label>
+        </div>
+
+        <div style="background: #000; padding: 10px; border-radius: 5px; margin: 10px 0;">
+            <p style="font-size: 11px; color: #00ff88; margin: 0;">DPI RECOMENDADA: 620</p>
+            <p style="font-size: 10px; color: #aaa;">Melhora a estabilidade da subida de mira.</p>
+        </div>
+
+        <button onclick="abrirFF()">INJETAR E ABRIR FF</button>
+    </div>
+
+    <script>
+        function logar() {
+            var key = document.getElementById('campo-key').value;
+            if (key === "2026") {
+                document.getElementById('scr-login').classList.add('hide');
+                document.getElementById('scr-menu').classList.remove('hide');
+            } else { alert("KEY INCORRETA"); }
+        }
+
+        function toggleDot(cb) {
+            document.getElementById('dot').style.display = cb.checked ? 'block' : 'none';
+        }
+
+        function abrirFF() {
+            alert("Ajustes aplicados! Mantenha o ponto fixo na altura do ombro do inimigo.");
+            window.location.href = "intent:#Intent;package=com.dts.freefireth;end";
+        }
+    </script>
+</body>
+</html>
